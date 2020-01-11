@@ -1,0 +1,23 @@
+
+
+$light: #F0EFF2;
+$light_accent: #6EAAAB;
+$brand: #1AA23F;
+$dark_accent: #73936B;
+$dark: #34273A;
+
+.bg-light {
+  background-color: $light !important;
+}
+.bg-light-accent{
+  background-color: $light_accent !important;
+}
+.bg-brand{
+  background-color: $brand !important;
+}
+.bg-dark-accent{
+  background-color: $dark_accent !important;
+}
+.bg-dark{
+  background-color: $dark !important;
+}
