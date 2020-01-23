@@ -1,11 +1,27 @@
-<div class="page-header" data-parallax="true" style="background-image:url('assets/img/airport-pxsphere.com.jpg');">
+<!--<div class="page-header animation-page-header" data-parallax="true" style="background-image:url('assets/img/airport-pxsphere.com.jpg');">
   <div class="container">
     <div class="row">
       <div class="col-md-8 ml-auto mr-auto">
-        <div class="brand">
+        <div class="brand" *ngIf="brandVisible">
           <h1>DigitAir</h1>
           <p>I totally did not base this header off another website.</p>
         </div>
+      </div>
+    </div>
+  </div>
+</div>-->
+
+<div class="page-header animation-page-header" data-parallax="true">
+  <div class="container" id="animation_padding_container">
+    <div  id="animation_resize_container"> <!-- "bootstrap" container used in scripts to calculate animation window size. -->
+      <div id="animation_container" style="background-color:rgba(0, 204, 204, 1.00); width:800px; height:600px">
+        <canvas id="canvas" width="800" height="600" style="position: absolute; display: none; background-color:rgba(0, 204, 204, 1.00);"></canvas>
+        <div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:800px; height:600px; position: absolute; left: 0px; top: 0px; display: none;">
+        </div>
+      </div>
+      <div id='_preload_div_' style='position:absolute; top:0; left:0; display: inline-block; height:600px; width: 800px; text-align: center;'>
+        <span style='display: inline-block; height: 100%; vertical-align: middle;'></span>
+        <img src="assets/animation/images/_preloader.gif" style='vertical-align: middle; max-height: 100%' />
       </div>
     </div>
   </div>
@@ -21,15 +37,42 @@
               <img src="assets/img/website big logo.png" alt="Circle Image" class="img-raised rounded-circle img-fluid">
             </div>
             <div class="name">
-              <h3 class="title">Fly Your Way</h3>
+              <div class="title"><h2>Fly Your Way</h2></div>
               <h6 class="subtitle text-muted">CUT THE COST, NOT THE QUALITY</h6>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="section section-basic">
-
+  </div>
+  <div class="section section-summary">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 col-lg-3 intro-icon"><img src="assets/img/helpful-human.png" alt="Helpful Human Icon" class="img-fluid" /></div>
+        <div class="col-md-8 col-lg-9">
+          <h2>Who We Are</h2>
+          <p>We are DigitAir, a flight-booking company designed around the idea that finding inexpensive flights need not be a joyless and challenging process.</p>
+        </div>
+      </div>
+      <div class="space-50"></div>
+      <div class="row">
+        <div class="col-md-4 col-lg-3 intro-icon"><img src="assets/img/speedy-plane.png" alt="Speedy Plane Icon" class="img-fluid" /></div>
+        <div class="col-md-8 col-lg-9">
+          <h3>What We Do</h3>
+          <small>We find people cheap, quality flights without the hassle of normal flight-booking services.</small>
+        </div>
+      </div>
+      <div class="space-50"></div>
+      <div class="row">
+        <div class="col-md-4 col-lg-3 intro-icon"><img src="assets/img/whacky-hammer.png" alt="Whacky Hammer Icon" class="img-fluid" /></div>
+        <div class="col-md-8 col-lg-9">
+          <h3>How we do it</h3>
+          <small>VERY CAREFULLY</small>
+        </div>
+      </div>
     </div>
   </div>
+
 </div>
+
+
