@@ -31,7 +31,6 @@ steps:
   inputs:
     ConnectionType: 'AzureRM'
     azureSubscription: 'Azure subscription 1(16cacd35-e329-45a1-95d0-0d817d83b0ad)'
-    appType: 'webAppLinux'
-    WebAppName: 'digitair-webapp'
+    appType: 'webApp'
+    WebAppName: 'digitair-test'
     packageForLinux: '$(System.DefaultWorkingDirectory)/../**/*.zip'
-    RuntimeStack: 'NODE|10-lts'
