@@ -29,6 +29,7 @@
   <script src="assets/animation/Words copy.js"></script>
   <script>
     var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
+    animationComplete = false;
     function init() {
       canvas = document.getElementById("canvas");
       anim_container = document.getElementById("animation_container");
@@ -69,11 +70,19 @@
       AdobeAn.makeResponsive(true, 'both', false, 1, [canvas, preloaderDiv, anim_container, dom_overlay_container]);
       AdobeAn.compositionLoaded(lib.properties.id);
       fnStartAnimation();
+      mainTimeline = stage.children[0].timeline;
+      mainTimeline.addEventListener("change", onAnimatingMainTimeline);
+      function onAnimatingMainTimeline() {
+        if (mainTimeline.position == mainTimeline.duration) {
+          console.log("animation complete");
+          animationComplete = true;
+        }
+      }
     }
   </script>
 
 </head>
 <body">
   <app-root></app-root>
-</body>
+  </body>
 </html>

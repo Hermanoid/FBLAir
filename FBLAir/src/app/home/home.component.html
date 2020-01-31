@@ -13,7 +13,8 @@
 
 <div class="page-header animation-page-header" data-parallax="true">
   <div class="container" id="animation_padding_container">
-    <div  id="animation_resize_container"> <!-- "bootstrap" container used in scripts to calculate animation window size. -->
+    <div id="animation_resize_container">
+      <!-- "bootstrap" container used in scripts to calculate animation window size. -->
       <div id="animation_container" style="background-color:rgba(0, 204, 204, 1.00); width:800px; height:600px">
         <canvas id="canvas" width="800" height="600" style="position: absolute; display: none; background-color:rgba(0, 204, 204, 1.00);"></canvas>
         <div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:800px; height:600px; position: absolute; left: 0px; top: 0px; display: none;">
@@ -22,6 +23,10 @@
       <div id='_preload_div_' style='position:absolute; top:0; left:0; display: inline-block; height:600px; width: 800px; text-align: center;'>
         <span style='display: inline-block; height: 100%; vertical-align: middle;'></span>
         <img src="assets/animation/images/_preloader.gif" style='vertical-align: middle; max-height: 100%' />
+        <div *ngIf="animationComplete">
+          <h2 style="vertical-align:middle;max-height:100%">DigitAir</h2>
+          <small>Start you high-flying adventure with us today.</small>
+        </div>
       </div>
     </div>
   </div>
