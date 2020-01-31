@@ -1,1 +1,5 @@
 https://pxhere.com/en/photo/1446199
+
+fonts:
+https://www.dafont.com/single-step.font
+https://www.dafont.com/mobstex.font
