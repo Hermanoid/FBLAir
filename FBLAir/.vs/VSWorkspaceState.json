@@ -1,12 +1,14 @@
 {
   "ExpandedNodes": [
     "",
-    "\\node_modules\\@ng-bootstrap\\ng-bootstrap",
     "\\src",
     "\\src\\app",
     "\\src\\app\\home",
     "\\src\\assets",
+    "\\src\\assets\\css",
+    "\\src\\assets\\img",
     "\\src\\styles"
   ],
+  "SelectedNode": "\\src\\app\\home\\home.component.sass",
   "PreviewInSolutionExplorer": false
 }

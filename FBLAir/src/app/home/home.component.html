@@ -1,32 +1,24 @@
-<!--<div class="page-header animation-page-header" data-parallax="true" style="background-image:url('assets/img/airport-pxsphere.com.jpg');">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8 ml-auto mr-auto">
-        <div class="brand" *ngIf="brandVisible">
-          <h1>DigitAir</h1>
-          <p>I totally did not base this header off another website.</p>
-        </div>
+<!-- Header section.  This is all to hold the animation and some other fanciness besides. -->
+<div class="page-header animation-page-header" data-parallax="true" [class.animation-page-complete]="animationComplete">
+  <div class="container" id="animation_padding_container">
+    <div *ngIf="animationComplete" class="row">
+      <div class="post-animation-div col-md-8 ml-auto mr-auto">
+        <h1 style="vertical-align:middle;max-height:100%">DigitAir</h1>
+        <h3 class="subtitle">Start your high-flying adventure with us today.</h3>
       </div>
     </div>
-  </div>
-</div>-->
-
-<div class="page-header animation-page-header" data-parallax="true">
-  <div class="container" id="animation_padding_container">
-    <div id="animation_resize_container">
+    <div id="animation_resize_container" [class.d-none]="animationComplete">
       <!-- "bootstrap" container used in scripts to calculate animation window size. -->
       <div id="animation_container" style="background-color:rgba(0, 204, 204, 1.00); width:800px; height:600px">
         <canvas id="canvas" width="800" height="600" style="position: absolute; display: none; background-color:rgba(0, 204, 204, 1.00);"></canvas>
         <div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:800px; height:600px; position: absolute; left: 0px; top: 0px; display: none;">
         </div>
       </div>
-      <div id='_preload_div_' style='position:absolute; top:0; left:0; display: inline-block; height:600px; width: 800px; text-align: center;'>
-        <span style='display: inline-block; height: 100%; vertical-align: middle;'></span>
-        <img src="assets/animation/images/_preloader.gif" style='vertical-align: middle; max-height: 100%' />
-        <div *ngIf="animationComplete">
-          <h2 style="vertical-align:middle;max-height:100%">DigitAir</h2>
-          <small>Start you high-flying adventure with us today.</small>
-        </div>
+      <div id='_preload_div_' style='position:absolute; top:0; left:0; height:600px; width: 800px; text-align: center;'>
+        <span id="_preload_div_custom_">
+          <span style='display: inline-block; height: 100%; vertical-align: middle;'></span>
+          <img src="assets/animation/images/_preloader.gif" style='vertical-align: middle; max-height: 100%' />
+        </span>
       </div>
     </div>
   </div>
@@ -77,7 +69,37 @@
       </div>
     </div>
   </div>
-
+  <div class="section section-letsdothis">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <h1 class="text-center">Get Started Today</h1>
+          <button class="btn btn-primary btn-lg">Lets do this!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section section-links">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 link-box">
+          <h3>Now Hiring!</h3>
+          <p>DigitAir offers a collaborative and positive work environment and competitive pay.  Click the link for more details.</p>
+          <button class="btn btn-primary">Reveal the Jobs >></button>
+        </div>
+        <div class="col-md-4 link-box">
+          <h3>Frequent Flyer Program</h3>
+          <p>Information about DigitAir's robust Frequent Flyer Program can be found beyond this link</p>
+          <button class="btn btn-primary">I Frequent the Skies >></button>
+        </div>
+        <div class="col-md-4 link-box">
+          <h3>About</h3>
+          <p>DigitAir's history began as a project between two high school students and grew into something great.  Read that story here.</p>
+          <button class="btn btn-primary">Delve into the History >></button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 

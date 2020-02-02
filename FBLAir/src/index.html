@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -28,8 +28,8 @@
   <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
   <script src="assets/animation/Words copy.js"></script>
   <script>
+    //This entire section is copied and pasted from Adobe Animate CC's output, so I've not commented it (except for a few alterations)
     var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
-    animationComplete = false;
     function init() {
       canvas = document.getElementById("canvas");
       anim_container = document.getElementById("animation_container");
@@ -55,8 +55,8 @@
       for (i = 0; i < ssMetadata.length; i++) {
         ss[ssMetadata[i].name] = new createjs.SpriteSheet({ "images": [queue.getResult(ssMetadata[i].name)], "frames": ssMetadata[i].frames })
       }
-      var preloaderDiv = document.getElementById("_preload_div_");
-      preloaderDiv.style.display = 'none';
+      var preloaderDiv = document.getElementById("_preload_div_custom_"); //As you may have inferred, the element was changed here for some customer DigitAir tweaks.
+      preloaderDiv.style.display = 'none'; 
       canvas.style.display = 'block';
       exportRoot = new lib.WOrdscopy1();
       stage = new lib.Stage(canvas);
@@ -70,12 +70,13 @@
       AdobeAn.makeResponsive(true, 'both', false, 1, [canvas, preloaderDiv, anim_container, dom_overlay_container]);
       AdobeAn.compositionLoaded(lib.properties.id);
       fnStartAnimation();
+      //The few lines before this are custom, to fire an event on animation completition (when the timeline's current position equals the total length)
       mainTimeline = stage.children[0].timeline;
       mainTimeline.addEventListener("change", onAnimatingMainTimeline);
       function onAnimatingMainTimeline() {
         if (mainTimeline.position == mainTimeline.duration) {
           console.log("animation complete");
-          animationComplete = true;
+          document.dispatchEvent(new Event("animationComplete"));
         }
       }
     }
