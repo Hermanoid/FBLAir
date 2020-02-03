@@ -60,3 +60,13 @@ $big-profile-imgwidth: 240px;
   margin-top: -($big-profile-imgwidth/2);
 }
 
+.pointer{ //"I want this button to looking clickable.  Make it a pointer."
+  cursor: pointer;
+}
+
+.navbar.bg-primary.navbar-transparent .navbar-nav .nav-item.active .nav-link { //Make the navbar buttons shine a little better when selected
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.navbar.bg-primary .navbar-nav .nav-item.active .nav-link { //...But only when the navbar is transparent.  The normal about of tinting is great for when it's filled in.
+  background-color: rgba(255, 255, 255, 0.1);
+}
