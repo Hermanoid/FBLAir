@@ -25,30 +25,23 @@ body {
 
 
 //Custom CSS
-#footer_image{
+#footer_image {
   height: $footer_height - 10px;
   width: $footer_height - 10px;
   margin-top: 10px;
-  float:right;
+  float: right;
 }
+
 #footer_image_cont {
   text-align: right;
   position: absolute;
   width: 100%;
   vertical-align: middle;
-  margin-left:0;
+  margin-left: 0;
 }
 
-body{
+body {
   background-color: $light
-}
-
-.final-gradient {
-  width: 100%;
-  height: 3in;
-  margin-top: -3in;
-  background: linear-gradient(0deg, #34273A, transparent);
-  background-color: white;
 }
 
 $big-profile-imgwidth: 240px;
@@ -56,17 +49,42 @@ $big-profile-imgwidth: 240px;
 .profile-page .profile.profile-modified img {
   max-width: $big-profile-imgwidth;
 }
-.profile.profile-modified .name{
+
+.profile.profile-modified .name {
   margin-top: -($big-profile-imgwidth/2);
 }
 
-.pointer{ //"I want this button to looking clickable.  Make it a pointer."
+.pointer { //"I want this button to looking clickable.  Make it a pointer."
   cursor: pointer;
 }
 
 .navbar.bg-primary.navbar-transparent .navbar-nav .nav-item.active .nav-link { //Make the navbar buttons shine a little better when selected
   background-color: rgba(255, 255, 255, 0.2);
 }
+
 .navbar.bg-primary .navbar-nav .nav-item.active .nav-link { //...But only when the navbar is transparent.  The normal about of tinting is great for when it's filled in.
   background-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-gradient {
+  background: linear-gradient(90deg,#15294c, #16af89);
+}
+
+.footer-gradient {
+  background: linear-gradient(90deg,#15294c, #16af89);
+}
+
+.final-gradient {
+  width: 50%;
+  height: 3in;
+  margin-top: -3in;
+}
+
+.final-gradient.final-gradient-left {
+  background: linear-gradient(0deg, #15294c, transparent);
+}
+
+.final-gradient.final-gradient-right {
+  margin-left: 50%;
+  background: linear-gradient(0deg, #16af89, transparent);
 }

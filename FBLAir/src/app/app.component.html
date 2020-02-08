@@ -1,4 +1,4 @@
-<nav class="navbar navbar-color-on-scroll fixed-top navbar-expand-lg navbar-transparent bg-primary" color-on-scroll="100">
+<nav class="navbar navbar-color-on-scroll fixed-top navbar-expand-lg navbar-transparent bg-dark navbar-gradient" color-on-scroll="100">
   <a class="navbar-brand" href="#">DigitAir</a>
   <button class="navbar-toggler" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed" aria-controls="navbarNavDropdown" [attr.aria-expanded]="isNavbarCollapsed" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -29,8 +29,9 @@
 </nav>
 
 <router-outlet></router-outlet>
-<div class="final-gradient"></div>
-<footer class="footer bg-dark p-0">
+<div class="final-gradient final-gradient-left"></div>
+<div class="final-gradient final-gradient-right"></div>
+<footer class="footer bg-dark footer-gradient p-0">
   <div id="footer_image_cont" class="d-none d-sm-block">
     <img id="footer_image" src="/assets/website watermark.png" alt="" />
   </div>
