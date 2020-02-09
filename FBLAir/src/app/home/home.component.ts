@@ -11,7 +11,7 @@ declare var init: any; //This "init()" function refers to the "init" function of
 export class HomeComponent implements OnInit {
   brandVisible = true;
   animationComplete = false;
-  constructor(private router: Router) {
+  constructor(public router: Router) {
   }
 
   ngOnInit() {

@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'FBLAir';
   isNavbarCollapsed = true;
-  constructor(private router: Router) {
+  constructor(public router: Router) {
 
   }
 }
