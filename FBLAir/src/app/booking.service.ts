@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Airport } from "./common/Airport";
 import { Flight } from "./common/Flight";
 import { Moment } from "moment/moment"
-import moment = require('moment/moment');
+import * as moment from 'moment/moment';
 
 @Injectable({
   providedIn: 'root'
