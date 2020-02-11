@@ -13,29 +13,25 @@
   <div class="container">
     <div class="section">
       <h2 class="text-center">Book your flight today!</h2>
+      <br />
       <div class="card card-nav-tabs">
-        <div class="card-header card-header-primary">
+        <div class="card-header card-header-custom">
           <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
           <div class="nav-tabs-navigation">
             <div class="nav-tabs-wrapper">
               <ul class="nav nav-tabs" id="nav-tabs-booking" data-tabs="tabs">
-                <li class="nav-item">
-                  <a class="nav-link active" href="#locations" data-toggle="tab">
-                    Locations
+                <li class="nav-item pointer">
+                  <a class="nav-link active" (click)="activatePage(1)" [class.active]="activePage==1">
+                    Details
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#times" data-toggle="tab">
-                    Times
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#listings" data-toggle="tab">
+                <li class="nav-item" [class.disabled]="!formValidated()">
+                  <a class="nav-link pointer" (click)="activatePage(2)" [class.active]="activePage==2">
                     Listings
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#bookit" data-toggle="tab">
+                <li class="nav-item" [class.disabled]="!formValidated()||!currentBooking">
+                  <a class="nav-link pointer" (click)="activatePage(3)" [class.active]="activePage==3">
                     Book It!
                   </a>
                 </li>
@@ -43,18 +39,98 @@
             </div>
           </div>
         </div>
-        <div class="card-body ">
-          <div class="tab-content text-center">
-            <div class="tab-pane active" id="locations">
-              <p> I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. </p>
+        <div class="card-body">
+          <div class="tab-content">
+            <div class="tab-pane" id="locations" [class.active]="activePage==1">
+
+              <label for="sourceAirport">Flight Date</label>
+              <br />
+              <div class="input-group">
+                <input class="form-control" placeholder="yyyy-mm-dd"
+                       name="dp" (dateSelect)="onDateSelection($event)" ngbDatepicker #d="ngbDatepicker" [ngClass]="validate?(date?'is-valid':'is-invalid'):''">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="d.toggle()">Select</button>
+                </div>
+              </div>
+              <div class="text-danger" *ngIf="validate&&!date">
+                Please select a date
+              </div>
+              <br />
+              <label for="sourceAirport">Source Airport</label>
+              <div class="input-group">
+                <select class="custom-select" id="sourceAirport" (change)="setSource($event)" [ngClass]="validate?(source?'is-valid':'is-invalid'):''">
+                  <option value="-1">Select...</option>
+                  <option *ngFor="let airport of bookingService.Airports" value={{airport.id}}>
+                    {{airport.fullName}}
+                  </option>
+                </select>
+                <div class="input-group-append" *ngIf="source">
+                  <span class="input-group-text" id="sourceid">{{source.id}}</span>
+                </div>
+              </div>
+              <div class="text-danger" *ngIf="validate&&!source">
+                Please select a source airport
+              </div>
+              <br />
+              <label for="destinationAirport">Destination Airport</label>
+              <div class="input-group">
+                <select class="custom-select" id="destinationAirport" (change)="setDestination($event)" [ngClass]="validate?(destination?'is-valid':'is-invalid'):''">
+                  <option value="-1">Select...</option>
+                  <option *ngFor="let airport of bookingService.Airports" value={{airport.id}}>
+                    {{airport.fullName}}
+                  </option>
+                </select>
+                <div class="input-group-append" *ngIf="destination">
+                  <span class="input-group-text" id="destinationid">{{destination.id}}</span>
+                </div>
+              </div>
+              <div class="text-danger" *ngIf="validate&&!destination">
+                Please select a destination airport
+              </div>
+              <br />
+              <p class="text-danger" *ngIf="errorMessage">{{errorMessage}}</p>
+              <div class="row justify-content-end">
+                <button class="btn btn-primary" [class.disabled]="!formValidated()" (click)="formNext()">Next >></button>
+              </div>
             </div>
-            <div class="tab-pane" id="times">
-              <p> I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at.</p>
+
+            <div class="tab-pane" id="times" [class.active]="activePage==2">
+              <h5 class="text-center text-primary">Flight from {{source.id}} to {{destination.id}} on {{ toMoment(date).toDate() | date:'fullDate'}}</h5>
+              <table class="table table-striped table-hover table-responsive" *ngIf="filteredFlights&&filteredFlights.length>0; else noflights">
+                <thead class="">
+                  <tr>
+                    <td class="d-sm-none">Flight Number</td>
+                    <td class="d-sm-none">Departing</td>
+                    <td class="d-sm-none">Arriving</td>
+                    <td>Departure Time</td>
+                    <td>Arrival Time</td>
+                    <td>Price</td>
+                    <td></td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let flight of filteredFlights">
+                    <td class="d-sm-none">{{flight.id}}</td>
+                    <td class="d-sm-none">{{flight.originAirportId}}</td>
+                    <td class="d-sm-none">{{flight.destinationAirportId}}</td>
+                    <td>{{flight.departureTime | date:'medium'}}</td>
+                    <td>{{flight.arrivalTime | date:'medium'}}</td>
+                    <td>{{flight.price | currency}}</td>
+                    <td><button class="btn btn-sm btn-success" (click)="book(flight)">Book >></button></td>
+                  </tr>
+                </tbody>
+              </table>
+              <ng-template #noflights>
+                <h3 class="text-center">
+                  <small class="text-danger">DigitAir has no flights available for these locations and this date.  Please try again with different inputs.</small>
+                </h3>
+              </ng-template>
+              <div class="row">
+                <button class="btn btn-primary" (click)="activePage=1"><< Back</button>
+              </div>
             </div>
-            <div class="tab-pane" id="listings">
-              <p>I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. So when you get something that has the name Kanye West on it, it’s supposed to be pushing the furthest possibilities. I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus.</p>
-            </div>
-            <div class="tab-pane" id="bookit">
+
+            <div class="tab-pane" id="listings" [class.active]="activePage==3">
               <p>I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. So when you get something that has the name Kanye West on it, it’s supposed to be pushing the furthest possibilities. I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus.</p>
             </div>
           </div>

@@ -3,6 +3,7 @@ import { Airport } from "./common/Airport";
 import { Flight } from "./common/Flight";
 import { Moment } from "moment/moment"
 import * as moment from 'moment/moment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -32,19 +33,18 @@ export class BookingService {
   private _flights: Flight[];
   get Flights() {
     return this._flights || //Check local cache
-      (this._flights = <Flight[]>JSON.parse(sessionStorage.getItem("digitair_flights")) || //If our local cache is empty, try to read session storage
-        this.grabFlights())//if our session storage is empty, get flights from cloud (here, a random function)
+      (this._flights = this.grabFlights())//if our cache is empty, get flights from cloud (here, a random function)
   }
   grabFlights(): Flight[] {
     //For demonstration purposes, we'll randomly generate flights.
-    let sources = this.Airports;
-    let destinations = this.Airports;
-    let flights: Flight[];
-    for(let source in sources) {
-      for (let destination in destinations) {
+    let flights: Flight[] = [];
+    for (let s = 0; s < this.Airports.length; s++) {
+      let source = this.Airports[s]
+      for (let d = 0; d < this.Airports.length; d++) {
+        let destination = this.Airports[d];
         if (source !== destination) {
           let numberDailyFlights = Math.ceil(Math.random() * 3); //Generated flights will run on a consistent daily schedule. Connections between airports will  have a random number (0-3) of regularly scheduled flights each day.
-          let flightTimes: number[]; //Delta minutes from midnight of a given day to the time of the flight.
+          let flightTimes: number[] = [];//Delta minutes from midnight of a given day to the time of the flight.
           for (let i = 0; i < numberDailyFlights; i++) {
             flightTimes.push( //Add to array
               Math.ceil( //Round to nearest minute 
@@ -53,14 +53,28 @@ export class BookingService {
             )
           }
           let today = moment().startOf("day"); //Start with today, then start scheduling for two years.
+          let flightDuration = Math.ceil(Math.random() * 200) + 50; //Randomly come up with a duration because it's easier to program than an actual list
+          let flightCapacity = [50, 80, 100, 150][Math.ceil(Math.random() * 3)]; //Nobody will notice, but we'll add in the idea that we have four plane sizes anyway
           for (let i = 0; i < 730; i++) { //We just ignore leap days and whatever else.
-
+            let departureTime = today.clone().add(i, "days");
+            flightTimes.forEach((time) => {
+              departureTime.add(time, "minutes");
+              flights.push({
+                id: flights.length,
+                originAirportId: source.id,
+                destinationAirportId: destination.id,
+                departureTime: departureTime.toDate(),
+                arrivalTime: departureTime.add(flightDuration, "minutes").toDate(),
+                capacity: flightCapacity,
+                remainingSeats: Math.ceil(Math.random() * flightCapacity),
+                price: Math.random() * 100 + 50 //Flawless price calculator
+              });
+            });
           }
         }
       }
-      destinations.shift(); //remove first airpot from list to prevent that connection from being re-generated
     }
-    return null; //TODO Remove
+    return flights;
   }
   constructor() { }
 }

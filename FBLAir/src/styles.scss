@@ -88,3 +88,7 @@ $big-profile-imgwidth: 240px;
   margin-left: 50%;
   background: linear-gradient(0deg, #16af89, transparent);
 }
+
+.input-group-append .btn, .input-group-prepend .btn{
+  margin:0;
+}
