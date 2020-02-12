@@ -22,7 +22,7 @@
     "@fortawesome/angular-fontawesome": "^0.6.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.27",
     "@fortawesome/free-solid-svg-icons": "^5.12.1",
-    "@ng-bootstrap/ng-bootstrap": "^5.1.5",
+    "@ng-bootstrap/ng-bootstrap": "^5.2.2",
     "bootstrap": "^4.4.1",
     "core-js": "^2.5.4",
     "jquery": "^3.4.1",
