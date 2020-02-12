@@ -69,6 +69,7 @@ $big-profile-imgwidth: 240px;
 .navbar-gradient {
   background: linear-gradient(90deg,#15294c, #16af89);
 }
+
 .navbar-gradient.navbar-transparent {
   background: none;
 }
@@ -92,8 +93,8 @@ $big-profile-imgwidth: 240px;
   background: linear-gradient(0deg, #16af89, transparent);
 }
 
-.input-group-append .btn, .input-group-prepend .btn{
-  margin:0;
+.input-group-append .btn, .input-group-prepend .btn {
+  margin: 0;
 }
 
 .letsdothis-btn {
@@ -101,4 +102,16 @@ $big-profile-imgwidth: 240px;
   border: none !important;
   padding: 2rem 4rem !important;
   border-radius: 0.5rem !important;
+}
+
+.nav-pills .nav-link fa-icon {
+  font-size: 40px;
+}
+
+.icon-box {
+  padding: 15px 20px;
+}
+
+.section-intro {
+  padding: 40px 0;
 }

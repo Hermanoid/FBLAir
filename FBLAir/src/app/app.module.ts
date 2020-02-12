@@ -10,6 +10,7 @@ import { JobsComponent } from './jobs/jobs.component';
 import { FreqflyComponent } from './freqfly/freqfly.component';
 import { AboutComponent } from './about/about.component';
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { PrivacyComponent } from './privacy/privacy.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
     BookingComponent,
     JobsComponent,
     FreqflyComponent,
-    AboutComponent
+    AboutComponent,
+    PrivacyComponent
   ],
   imports: [
     BrowserModule,
