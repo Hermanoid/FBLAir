@@ -5372,7 +5372,7 @@ lib.properties = {
 		{src:"assets/animation/images/Words copy_atlas_33.png", id:"Words copy_atlas_33"},
 		{src:"assets/animation/images/Words copy_atlas_34.png", id:"Words copy_atlas_34"},
 		{src:"assets/animation/images/Words copy_atlas_35.png", id:"Words copy_atlas_35"},
-		{src:”assets/animation/images/Words copy_atlas_36.png", id:"Words copy_atlas_36"},
+		{src:"assets/animation/images/Words copy_atlas_36.png", id:"Words copy_atlas_36"},
 		{src:"assets/animation/images/Words copy_atlas_37.png", id:"Words copy_atlas_37"},
 		{src:"assets/animation/images/Words copy_atlas_38.png", id:"Words copy_atlas_38"},
 		{src:"assets/animation/images/Words copy_atlas_39.png", id:"Words copy_atlas_39"},
