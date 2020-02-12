@@ -94,44 +94,170 @@
               </div>
             </div>
 
-            <div class="tab-pane" id="times" [class.active]="activePage==2">
+            <div class="tab-pane" id="times" [class.active]="activePage==2" *ngIf="activePage==2">
+              <!-- The *ngIf here shouldn't be necessary, but in reality, it prevents the script from throwing errors when source, destination, and date haven't been selected yet. -->
               <h5 class="text-center text-primary">Flight from {{source.id}} to {{destination.id}} on {{ toMoment(date).toDate() | date:'fullDate'}}</h5>
-              <table class="table table-striped table-hover table-responsive" *ngIf="filteredFlights&&filteredFlights.length>0; else noflights">
-                <thead class="">
-                  <tr>
-                    <td class="d-sm-none">Flight Number</td>
-                    <td class="d-sm-none">Departing</td>
-                    <td class="d-sm-none">Arriving</td>
-                    <td>Departure Time</td>
-                    <td>Arrival Time</td>
-                    <td>Price</td>
-                    <td></td>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let flight of filteredFlights">
-                    <td class="d-sm-none">{{flight.id}}</td>
-                    <td class="d-sm-none">{{flight.originAirportId}}</td>
-                    <td class="d-sm-none">{{flight.destinationAirportId}}</td>
-                    <td>{{flight.departureTime | date:'medium'}}</td>
-                    <td>{{flight.arrivalTime | date:'medium'}}</td>
-                    <td>{{flight.price | currency}}</td>
-                    <td><button class="btn btn-sm btn-success" (click)="book(flight)">Book >></button></td>
-                  </tr>
-                </tbody>
-              </table>
+              <hr />
+              <div class="row">
+                <div class="col-lg-6" *ngFor="let flight of filteredFlights">
+                  <div class="card text-center m-2">
+                    <div class="card-body">
+                      <h5 class="card-title nice-font">{{flight.departureTime | date:'shortTime'}}</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Arriving: {{flight.arrivalTime | date:'shortTime'}}</h6>
+                      <p class="card-text">{{flight.originAirportId}} <fa-icon [icon]="faLongArrowAltRight"></fa-icon> {{flight.destinationAirportId}}</p>
+                      <button (click)="book(flight)" class="btn btn-small btn-success text-right">{{flight.price | currency}} >></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--<table class="table table-striped table-hover" *ngIf="filteredFlights&&filteredFlights.length>0; else noflights">
+                  <thead class="">
+                    <tr>
+                      <td class="d-none d-md-table-cell">Flight Number</td>
+                      <td class="d-none d-md-table-cell">Departing</td>
+                      <td class="d-none d-md-table-cell">Arriving</td>
+                      <td>Departure Time</td>
+                      <td>Arrival Time</td>
+                      <td>Price</td>
+                      <td></td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let flight of filteredFlights">
+                      <td class="d-none d-md-table-cell">{{flight.id}}</td>
+                      <td class="d-none d-md-table-cell">{{flight.originAirportId}}</td>
+                      <td class="d-none d-md-table-cell">{{flight.destinationAirportId}}</td>
+                      <td>{{flight.departureTime | date:'medium'}}</td>
+                      <td>{{flight.arrivalTime | date:'medium'}}</td>
+                      <td>{{flight.price | currency}}</td>
+                      <td><button class="btn btn-sm btn-success" (click)="book(flight)">>></button></td>
+                    </tr>
+                  </tbody>
+                </table>-->
               <ng-template #noflights>
                 <h3 class="text-center">
                   <small class="text-danger">DigitAir has no flights available for these locations and this date.  Please try again with different inputs.</small>
                 </h3>
               </ng-template>
-              <div class="row">
-                <button class="btn btn-primary" (click)="activePage=1"><< Back</button>
-              </div>
+              <hr />
+              <a [routerLink]="" (click)="activePage=1" class="lead"><< Back</a>
             </div>
 
             <div class="tab-pane" id="listings" [class.active]="activePage==3">
-              <p>I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. So when you get something that has the name Kanye West on it, it’s supposed to be pushing the furthest possibilities. I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus.</p>
+            </div>
+            <div class="row">
+              <div class="card col-lg-4 order-lg-2 m-0 mb-3">
+                <div class="card-body">
+                  <h3 class="card-title nice-font">Flight Information:</h3>
+                  <hr />
+                  <dl *ngIf="currentBooking">
+                    <dt>Departing</dt>
+                    <dd>{{source.fullName}} ({{source.id}})</dd>
+                    <dt>Departure Time</dt>
+                    <dd>{{currentBooking.flight.departureTime | date}}</dd>
+                    <dt>Arriving</dt>
+                    <dd>{{destination.fullName}} ({{destination.id}})</dd>
+                    <dt>Arrival Time</dt>
+                    <dd>{{currentBooking.flight.arrivalTime | date}}</dd>
+                    <dt>Price</dt>
+                    <dd>{{currentBooking.flight.price}}</dd>
+                  </dl>
+                </div>
+              </div>
+              <div class="col-lg-8 order-lg-1">
+                <div class="jumbotron booking-jumbotron" style="width:100%">
+                  <form class="needs-validation" novalidate>
+                    <div class="form-row">
+                      <div class="col-md-6 mb-3">
+                        <label for="validationCustom01">First name</label>
+                        <input type="text" class="form-control" placeholder="Mark" required>
+                        <div class="valid-feedback">
+                          Looks good!
+                        </div>
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label for="validationCustom02">Last name</label>
+                        <input type="text" class="form-control" placeholder="Otto" required>
+                        <div class="valid-feedback">
+                          Looks good!
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="col-md-6 mb-3">
+                        <label for="validationCustom03">City</label>
+                        <input type="text" class="form-control" placeholder="Greensville" required>
+                        <div class="invalid-feedback">
+                          Please provide a valid city.
+                        </div>
+                      </div>
+                      <div class="col-md-3 mb-3">
+                        <label for="validationCustom04">State</label>
+                        <select class="custom-select" required>
+                          <option selected disabled value="">Choose...</option>
+                          <option>...</option>
+                        </select>
+                        <div class="invalid-feedback">
+                          Please select a valid state.
+                        </div>
+                      </div>
+                      <div class="col-md-3 mb-3">
+                        <label for="validationCustom05">Zip</label>
+                        <input type="text" class="form-control" placeholder="12345" required>
+                        <div class="invalid-feedback">
+                          Please provide a valid zip.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="col-12 mb-3">
+                        <label for="validationCustomEmail">Email</label>
+                        <div class="input-group">
+                          <input type="text" class="form-control" id="validationCustomEmail" placeholder="janedoe@example.com" required>
+                          <div class="invalid-feedback">
+                            Please enter your email.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="col-md-7 mb-3">
+                        <label for="validationCustom03">Credit Card</label>
+                        <input type="text" class="form-control" placeholder="xxxx-xxxx-xxxx-xxxx" required>
+                        <div class="invalid-feedback">
+                          Please provide a valid credit card number.
+                        </div>
+                      </div>
+                      <div class="col-md-3 mb-3">
+                        <label for="validationCustom04">Expiration</label>
+                        <input type="text" class="form-control" placeholder="mm/dd/yyyy" required>
+                        <div class="invalid-feedback">
+                          Please provide a valid expiration date.
+                        </div>
+                      </div>
+                      <div class="col-md-2 mb-3">
+                        <label for="validationCustom04">CVC</label>
+                        <input type="text" class="form-control" placeholder="xxx" required>
+                        <div class="invalid-feedback">
+                          Please provide a valid CVC.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="checkbox" value=""> Agree to terms and conditions
+                          <span class="form-check-sign">
+                            <span class="check"></span>
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+                    <button class="btn btn-primary" type="submit" (click)="submitBooking">Submit form</button>
+                  </form>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>

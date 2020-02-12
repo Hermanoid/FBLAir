@@ -5,6 +5,8 @@ import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
 import { Flight } from '../common/Flight';
 import * as moment from "moment"
 import { Booking } from '../common/Booking';
+import { faLongArrowAltRight } from "@fortawesome/free-solid-svg-icons"
+
 
 @Component({
   selector: 'app-booking',
@@ -20,6 +22,7 @@ export class BookingComponent implements OnInit {
   private filteredFlights: Flight[];
   private errorMessage: string;
   private currentBooking: Booking;
+  faLongArrowAltRight = faLongArrowAltRight;
   constructor(public bookingService: BookingService) { }
 
   ngOnInit() {
@@ -68,7 +71,7 @@ export class BookingComponent implements OnInit {
     this.filteredFlights = this.bookingService.Flights.filter((flight) => {
       let correctDay = moment(flight.departureTime).isSame(targetDay, "day");
       return correctDay && flight.originAirportId == this.source.id && flight.destinationAirportId == this.destination.id;
-    }).sort((a, b) => a.departureTime.getTime() - b.departureTime.getTime);
+    }).sort((a, b) => a.departureTime.getTime() - b.departureTime.getTime());
   }
 
   toMoment(date: NgbDate) : moment.Moment {
@@ -78,5 +81,8 @@ export class BookingComponent implements OnInit {
   book(flight: Flight) {
     this.currentBooking = new Booking(flight);
     this.activePage = 3;
+  }
+  submitBooking() {
+    alert('Congratulations!  You have booked flight' + this.currentBooking.flight.id + '!');
   }
 }
