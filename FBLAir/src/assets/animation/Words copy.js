@@ -3915,7 +3915,7 @@ p.nominalBounds = new cjs.Rectangle(0,0,850.2,571.8);
 
 
 // stage content:
-(lib.WOrdscopy1 = function(mode,startPosition,loop) {
+(lib.Wordscopy = function(mode,startPosition,loop) {
 if (loop == null) { loop = false; }	this.initialize(mode,startPosition,loop,{});
 
 	// experience_
@@ -5372,7 +5372,7 @@ lib.properties = {
 		{src:"assets/animation/images/Words copy_atlas_33.png", id:"Words copy_atlas_33"},
 		{src:"assets/animation/images/Words copy_atlas_34.png", id:"Words copy_atlas_34"},
 		{src:"assets/animation/images/Words copy_atlas_35.png", id:"Words copy_atlas_35"},
-		{src:"assets/animation/images/Words copy_atlas_36.png", id:"Words copy_atlas_36"},
+		{src:”assets/animation/images/Words copy_atlas_36.png", id:"Words copy_atlas_36"},
 		{src:"assets/animation/images/Words copy_atlas_37.png", id:"Words copy_atlas_37"},
 		{src:"assets/animation/images/Words copy_atlas_38.png", id:"Words copy_atlas_38"},
 		{src:"assets/animation/images/Words copy_atlas_39.png", id:"Words copy_atlas_39"},
