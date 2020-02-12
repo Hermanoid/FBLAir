@@ -67,7 +67,7 @@ export class BookingService {
                 arrivalTime: departureTime.add(flightDuration, "minutes").toDate(),
                 capacity: flightCapacity,
                 remainingSeats: Math.ceil(Math.random() * flightCapacity),
-                price: Math.random() * 100 + 50 //Flawless price calculator
+                price: Math.random() * 80 + 20 //Flawless price calculator
               });
             });
           }

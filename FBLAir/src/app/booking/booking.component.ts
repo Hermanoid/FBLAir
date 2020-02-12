@@ -44,7 +44,11 @@ export class BookingComponent implements OnInit {
   onDateSelection(date: NgbDate) {
     this.date = date;
   }
-
+  onManualDateEntry($event) {
+    let javascriptDate = new Date($event.target.value); //Parse the date
+    this.date = new NgbDate(javascriptDate.getUTCFullYear(), javascriptDate.getUTCMonth()+1, javascriptDate.getUTCDate()); //Convert it to NgbDate (the format used by Ng-boostraps datepicker module) (also months are 0-based in native javascript, so we must add 1 to get to 1-based for NgbDate)
+    console.log(this.date);
+  }
   validateForm(): boolean { //Perform the validation (not to be confused with formValidated())
     if (this.source == this.destination) {
       this.errorMessage = "Destination must not be the same as Source.";
@@ -83,6 +87,6 @@ export class BookingComponent implements OnInit {
     this.activePage = 3;
   }
   submitBooking() {
-    alert('Congratulations!  You have booked flight' + this.currentBooking.flight.id + '!');
+    alert("Congratulations!  You've booked flight " + this.currentBooking.flight.id + '!');
   }
 }

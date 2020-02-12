@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgbDateStruct, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -11,6 +11,9 @@ export class JobsComponent implements OnInit {
   date: { year: number, month: number };
 
   constructor(private calendar: NgbCalendar) {
+  }
+  ngOnInit() {
+
   }
 
   selectToday() {

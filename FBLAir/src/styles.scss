@@ -69,6 +69,9 @@ $big-profile-imgwidth: 240px;
 .navbar-gradient {
   background: linear-gradient(90deg,#15294c, #16af89);
 }
+.navbar-gradient.navbar-transparent {
+  background: none;
+}
 
 .footer-gradient {
   background: linear-gradient(90deg,#15294c, #16af89);
@@ -91,4 +94,11 @@ $big-profile-imgwidth: 240px;
 
 .input-group-append .btn, .input-group-prepend .btn{
   margin:0;
+}
+
+.letsdothis-btn {
+  background: linear-gradient(45deg,#15294c, #16af89);
+  border: none !important;
+  padding: 2rem 4rem !important;
+  border-radius: 0.5rem !important;
 }
