@@ -14,14 +14,14 @@ import { faLongArrowAltRight } from "@fortawesome/free-solid-svg-icons"
   styleUrls: ['./booking.component.sass']
 })
 export class BookingComponent implements OnInit {
-  private activePage: number;
-  private source: Airport;
-  private destination: Airport;
-  private validate: boolean = false;
+  public activePage: number;
+  public source: Airport;
+  public destination: Airport;
+  public validate: boolean = false;
   public date: NgbDate;
-  private filteredFlights: Flight[];
-  private errorMessage: string;
-  private currentBooking: Booking;
+  public filteredFlights: Flight[];
+  public errorMessage: string;
+  public currentBooking: Booking;
   faLongArrowAltRight = faLongArrowAltRight;
   constructor(public bookingService: BookingService) { }
 

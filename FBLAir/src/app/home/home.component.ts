@@ -9,8 +9,8 @@ declare var init: any; //This "init()" function refers to the "init" function of
   styleUrls: ['./home.component.sass']
 })
 export class HomeComponent implements OnInit {
-  brandVisible = true;
-  animationComplete = false;
+  public brandVisible = true;
+  public animationComplete = false;
   constructor(public router: Router) {
   }
 

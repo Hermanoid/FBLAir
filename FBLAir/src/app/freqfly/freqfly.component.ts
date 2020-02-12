@@ -7,10 +7,10 @@ import { faAdjust, faSpinner, faCommentDollar, faQuestion} from "@fortawesome/fr
   styleUrls: ['./freqfly.component.sass']
 })
 export class FreqflyComponent implements OnInit {
-  faAdjust = faAdjust;
-  faSpinner = faSpinner;
-  faCommentDollar = faCommentDollar;
-  faQuestion = faQuestion;
+  public faAdjust = faAdjust;
+  public faSpinner = faSpinner;
+  public faCommentDollar = faCommentDollar;
+  public faQuestion = faQuestion;
   constructor() { }
 
   ngOnInit() {

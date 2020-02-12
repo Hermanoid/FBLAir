@@ -8,11 +8,11 @@ import { faBuilding, faBriefcase, faWalking } from "@fortawesome/free-solid-svg-
   styleUrls: ['./jobs.component.sass']
 })
 export class JobsComponent implements OnInit {
-  model: NgbDateStruct;
-  date: { year: number, month: number };
-  faBuilding = faBuilding;
-  faBriefcase = faBriefcase;
-  faWalking = faWalking;
+  public model: NgbDateStruct;
+  public date: { year: number, month: number };
+  public faBuilding = faBuilding;
+  public faBriefcase = faBriefcase;
+  public faWalking = faWalking;
   constructor(private calendar: NgbCalendar) {
   }
   ngOnInit() {
