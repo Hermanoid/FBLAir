@@ -3916,7 +3916,7 @@ p.nominalBounds = new cjs.Rectangle(0,0,850.2,571.8);
 
 // stage content:
 (lib.WOrdscopy1 = function(mode,startPosition,loop) {
-if (loop == null) { loop = false; }	this.initialize(mode,startPosition,loop,{});
+if (loop === null) { loop = false; }	this.initialize(mode,startPosition,loop,{});
 
 	// experience_
 	this.instance = new lib.CachedBmp_1();
