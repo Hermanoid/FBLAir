@@ -4,8 +4,10 @@
     <div class="container" id="animation_padding_container">
       <div *ngIf="animationComplete" class="row">
         <div class="post-animation-div col-md-8 ml-auto mr-auto">
-          <h1 style="vertical-align:middle;max-height:100%">DigitAir</h1>
-          <h3 class="subtitle">Start your high-flying adventure with us today.</h3>
+          <div id="digitair_emblem_box">
+            <img src="/assets/img/DigitAir_Logo.png" alt="DigitAir Logo" id="digitair_emblem" />
+            <h3 class="subtitle">Start your high-flying adventure with us today.</h3>
+          </div>
         </div>
       </div>
       <div id="animation_resize_container" [class.d-none]="animationComplete">
@@ -98,20 +100,26 @@
   <div class="section section-links">
     <div class="container">
       <div class="row">
-        <div class="col-md-4 link-box">
-          <h3>Now Hiring!</h3>
-          <p>DigitAir offers a collaborative and positive work environment and competitive pay.  Click the link for more details.</p>
-          <button class="btn btn-primary">Reveal the Jobs >></button>
+        <div class="col-lg-4">
+          <div class="card m-3 p-3">
+            <h3 class="card-title nice-font">Now Hiring!</h3>
+            <p>DigitAir offers a collaborative and positive work environment and competitive pay.  Click the link for more details.</p>
+            <button class="btn btn-primary front-link-btn" routerLink="/jobs">Reveal the Jobs >></button>
+          </div>
         </div>
-        <div class="col-md-4 link-box">
-          <h3>Frequent Flyer Program</h3>
-          <p>Information about DigitAir's robust Frequent Flyer Program can be found beyond this link</p>
-          <button class="btn btn-primary">I Frequent the Skies >></button>
+        <div class="col-lg-4">
+          <div class="card m-3 p-3">
+            <h3 class="card-title nice-font">Frequent Flyer Program</h3>
+            <p>Information about DigitAir's robust Frequent Flyer Program can be found beyond this link</p>
+            <button class="btn btn-primary front-link-btn" routerLink="/freqfly">I Frequent the Skies >></button>
+          </div>
         </div>
-        <div class="col-md-4 link-box">
-          <h3>About</h3>
-          <p>DigitAir's history began as a project between two high school students and grew into something great.  Read that story here.</p>
-          <button class="btn btn-primary">Delve into the History >></button>
+        <div class="col-lg-4">
+          <div class="card m-3 p-3">
+            <h3 class="card-title nice-font">About</h3>
+            <p>DigitAir's history began as a project between two high school students and grew into something great.  See what makes this site tick here.</p>
+            <button class="btn btn-primary front-link-btn" routerLink="/credits">Delve into the History >></button>
+          </div>
         </div>
       </div>
     </div>

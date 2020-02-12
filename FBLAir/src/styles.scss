@@ -20,9 +20,30 @@ body {
   bottom: 0;
   width: 100%;
   height: $footer_height; /* Set the fixed height of the footer here */
-  line-height: $footer_height - 20px; /* Vertically center the text there */
 }
 
+.footer-content {
+  position: absolute;
+  margin-right: auto;
+  margin-left: auto;
+  left: 0;
+  right: 0;
+  padding: 2rem;
+  text-align: center;
+  color: #CCC;
+  z-index: 5;
+}
+
+.footer-credits-link {
+  padding: 5px;
+  text-decoration: none;
+  color: white;
+}
+
+.footer-credits-link:hover {
+  color: #BBB !important;
+  text-decoration: none !important;
+}
 
 //Custom CSS
 #footer_image {
@@ -38,6 +59,7 @@ body {
   width: 100%;
   vertical-align: middle;
   margin-left: 0;
+  z-index: 0;
 }
 
 body {
@@ -114,4 +136,14 @@ $big-profile-imgwidth: 240px;
 
 .section-intro {
   padding: 40px 0;
+}
+
+.nice-font {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+#logo{
+  height:50px;
+  width:auto;
+  margin-top:-8px;
 }

@@ -5,6 +5,7 @@ import { BookingComponent } from './booking/booking.component';
 import { JobsComponent } from './jobs/jobs.component';
 import { FreqflyComponent } from './freqfly/freqfly.component';
 import { PrivacyComponent } from './privacy/privacy.component';
+import { CreditsComponent } from './credits/credits.component';
 
 const routes: Routes = [
   { path: '', pathMatch:'full', component: HomeComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'jobs', component: JobsComponent },
   { path: 'freqfly', component: FreqflyComponent },
   { path: 'privacy', component: PrivacyComponent },
+  { path: 'credits', component: CreditsComponent },
   { path: '**', redirectTo: '' }
 ];
 

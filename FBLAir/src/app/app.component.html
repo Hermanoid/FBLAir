@@ -1,17 +1,19 @@
 <nav class="navbar navbar-color-on-scroll fixed-top navbar-expand-lg navbar-transparent bg-dark navbar-gradient" color-on-scroll="100">
-  <a class="navbar-brand" href="#">DigitAir</a>
+  <a class="navbar-brand" href="#">
+  <img src="/assets/img/DigitAir_Logo.png" alt="DigitAir Logo" id="logo"/>
+  </a>
   <button class="navbar-toggler" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed" aria-controls="navbarNavDropdown" [attr.aria-expanded]="isNavbarCollapsed" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" [ngbCollapse]="isNavbarCollapsed">
     <ul class="navbar-nav">
-      <li class="nav-item active">
+      <li class="nav-item" [class.active]="router.url === '/'">
         <a class="nav-link pointer" routerLink="/">Home <span class="sr-only">(current)</span></a> <!-- TODO: Change Active Page with navigation--> 
       </li>
-      <li class="nav-item">
+      <li class="nav-item" [class.active]="router.url === '/booking'">
         <a class="nav-link pointer" routerLink="/booking">Booking</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" [class.active]="router.url === '/jobs'">
         <a class="nav-link pointer" routerLink="/jobs">Jobs</a>
       </li>
       <li class="nav-item dropdown">
@@ -19,9 +21,9 @@
           About
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" routerLink="/freqfly">Frequent Flyer Program</a>
-          <a class="dropdown-item" routerLink="/privacy">Privacy Policy</a>
-          <a class="dropdown-item" routerLink="/credits">Credits</a>
+          <a class="dropdown-item" routerLink="/freqfly" [class.active]="router.url === '/freqfly'">Frequent Flyer Program</a>
+          <a class="dropdown-item" routerLink="/privacy" [class.active]="router.url === '/privacy'">Privacy Policy</a>
+          <a class="dropdown-item" routerLink="/credits" [class.active]="router.url === '/credits'">Credits</a>
         </div>
       </li>
     </ul>
@@ -32,10 +34,10 @@
 <div class="final-gradient final-gradient-left"></div>
 <div class="final-gradient final-gradient-right"></div>
 <footer class="footer bg-dark footer-gradient p-0">
+  <div class="footer-content">
+    <a routerLink="/credits" class="text-ligh footer-credits-link">Made with Material Kit by Lucas Niewohner and Isabella Jetensky</a> <a routerLink="/privacy" class="footer-credits-link">(Privacy Policy)</a>
+  </div>
   <div id="footer_image_cont" class="d-none d-sm-block">
     <img id="footer_image" src="/assets/website watermark.png" alt="" />
-  </div>
-  <div class="footer-content">
-    <p class="text-light">Don't talk to us, ever.</p>
   </div>
 </footer>
