@@ -42,47 +42,51 @@
         <div class="card-body">
           <div class="tab-content">
             <div class="tab-pane" id="locations" [class.active]="activePage==1">
-
-              <label for="sourceAirport">Flight Date</label>
               <br />
-              <div class="input-group">
-                <input class="form-control" placeholder="yyyy-mm-dd"
-                       name="dp" (dateSelect)="onDateSelection($event)" (change)="onManualDateEntry($event)" ngbDatepicker #d="ngbDatepicker" [ngClass]="validate?(date?'is-valid':'is-invalid'):''">
-                <div class="input-group-append">
-                  <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="d.toggle()">Select</button>
-                </div>
+              <div class="form-group bdm-form-group">
+                <label class="bmd-label-static">Flight Date</label>
+                <input type="text" class="form-control" placeholder="yyyy-mm-dd" (dateSelect)="onDateSelection($event)" (change)="onManualDateEntry($event)" ngbDatepicker #d="ngbDatepicker" [ngClass]="validate?(date?'is-valid':'is-invalid'):''" name="dp"/>
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-fab btn-round btn-primary btn-dateselect" id="button-addon2" (click)="d.toggle()">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18pt" height="18pt" viewBox="0 0 24 24" version="1.1">
+                      <g id="surface516284">
+                        <path style=" stroke:none;fill-rule:nonzero;fill:rgb(100%,100%,100%);fill-opacity:1;" d="M 7 1 C 6.449219 1 6 1.449219 6 2 L 6 3 L 5 3 C 3.898438 3 3 3.898438 3 5 L 3 19 C 3 20.101562 3.898438 21 5 21 L 19 21 C 20.101562 21 21 20.101562 21 19 L 21 5 C 21 3.898438 20.101562 3 19 3 L 18 3 L 18 2 C 18 1.449219 17.550781 1 17 1 C 16.449219 1 16 1.449219 16 2 L 16 3 L 8 3 L 8 2 C 8 1.449219 7.550781 1 7 1 Z M 5 8 L 19 8 L 19 18 C 19 18.550781 18.550781 19 18 19 L 6 19 C 5.449219 19 5 18.550781 5 18 Z M 5 8 " />
+                      </g>
+                    </svg>
+                  </button>
+                </span>
               </div>
               <div class="text-danger" *ngIf="validate&&!date">
                 Please select a date
               </div>
               <br />
-              <label for="sourceAirport">Source Airport</label>
-              <div class="input-group">
-                <select class="custom-select" id="sourceAirport" (change)="setSource($event)" [ngClass]="validate?(source?'is-valid':'is-invalid'):''">
+              <div class="form-group">
+                <label for="sourceAirport">Source Airport</label>
+                <select class="form-control selectpicker" data-style="btn btn-link" id="sourceAirport" (change)="setSource($event)" [ngClass]="validate?(source?'is-valid':'is-invalid'):''">
                   <option value="-1">Select...</option>
                   <option *ngFor="let airport of bookingService.Airports" value={{airport.id}}>
                     {{airport.fullName}}
                   </option>
                 </select>
-                <div class="input-group-append" *ngIf="source">
+                <!--<div class="input-group-append" *ngIf="source">
                   <span class="input-group-text" id="sourceid">{{source.id}}</span>
-                </div>
+                </div>-->
               </div>
               <div class="text-danger" *ngIf="validate&&!source">
                 Please select a source airport
               </div>
               <br />
-              <label for="destinationAirport">Destination Airport</label>
-              <div class="input-group">
-                <select class="custom-select" id="destinationAirport" (change)="setDestination($event)" [ngClass]="validate?(destination?'is-valid':'is-invalid'):''">
+              <div class="form-group">
+                <label for="destinationAirport">Destination Airport</label>
+                <select class="form-control selectpicker" data-style="btn btn-link" id="destinationAirport" (change)="setDestination($event)" [ngClass]="validate?(destination?'is-valid':'is-invalid'):''">
                   <option value="-1">Select...</option>
                   <option *ngFor="let airport of bookingService.Airports" value={{airport.id}}>
                     {{airport.fullName}}
                   </option>
                 </select>
-                <div class="input-group-append" *ngIf="destination">
+                <!--<div class="input-group-append" *ngIf="destination">
                   <span class="input-group-text" id="destinationid">{{destination.id}}</span>
-                </div>
+                </div>-->
               </div>
               <div class="text-danger" *ngIf="validate&&!destination">
                 Please select a destination airport

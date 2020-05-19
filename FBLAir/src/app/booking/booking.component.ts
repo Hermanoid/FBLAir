@@ -51,8 +51,8 @@ export class BookingComponent implements OnInit {
   }
   validateForm(): boolean { //Perform the validation (not to be confused with formValidated())
     if (this.source == this.destination) {
-      this.errorMessage = "Destination must not be the same as Source.";
-    } else if (this.toMoment(this.date).isBefore(moment())) { //If the day is before today
+      this.errorMessage = "The source airport cannot match the destination!";
+    } else if (this.date && this.toMoment(this.date).isBefore(moment())) { //If the day is before today
       this.errorMessage = "Selected date must not be in the past";
     } else {
       this.errorMessage = null;
