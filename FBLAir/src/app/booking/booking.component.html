@@ -14,7 +14,7 @@
     <div class="section">
       <h2 class="text-center">Book your flight today!</h2>
       <br />
-      <div class="card card-nav-tabs">
+      <div class="card card-nav-tabs card-plain">
         <div class="card-header card-header-custom">
           <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
           <div class="nav-tabs-navigation">
@@ -45,7 +45,7 @@
               <br />
               <div class="form-group bdm-form-group">
                 <label class="bmd-label-static">Flight Date</label>
-                <input type="text" class="form-control" placeholder="yyyy-mm-dd" (dateSelect)="onDateSelection($event)" (change)="onManualDateEntry($event)" ngbDatepicker #d="ngbDatepicker" [ngClass]="validate?(date?'is-valid':'is-invalid'):''" name="dp"/>
+                <input type="text" class="form-control" placeholder="yyyy-mm-dd" (dateSelect)="onDateSelection($event)" (change)="onManualDateEntry($event)" ngbDatepicker #d="ngbDatepicker" [ngClass]="validate?(date?'is-valid':'is-invalid'):''" name="dp" />
                 <span class="input-group-btn">
                   <button type="button" class="btn btn-fab btn-round btn-primary btn-dateselect" id="button-addon2" (click)="d.toggle()">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18pt" height="18pt" viewBox="0 0 24 24" version="1.1">
@@ -105,7 +105,7 @@
               <div class="row">
                 <div class="col-lg-6" *ngFor="let flight of filteredFlights">
                   <div class="card text-center m-2">
-                    <div class="card-body">
+                    <div class="card-body flight-card">
                       <h5 class="card-title nice-font">Departing: {{flight.departureTime | date:'shortTime'}}</h5>
                       <h6 class="card-subtitle mb-2 text-muted">Arriving: {{flight.arrivalTime | date:'shortTime'}}</h6>
                       <p class="card-text">{{flight.originAirportId}} <fa-icon [icon]="faLongArrowAltRight"></fa-icon> {{flight.destinationAirportId}}</p>
@@ -120,7 +120,7 @@
                 </h3>
               </ng-template>
               <hr />
-              <a [routerLink]="" (click)="activePage=1" class="lead"><< Back</a>
+              <button class="btn btn-primary" (click)="activePage=1"><< Back</button>
             </div>
 
             <div class="tab-pane" id="listings" [class.active]="activePage==3">
@@ -139,60 +139,68 @@
                       <dt>Arrival Time</dt>
                       <dd>{{currentBooking.flight.arrivalTime | date}}</dd>
                       <dt>Price</dt>
-                      <dd>{{currentBooking.flight.price}}</dd>
+                      <dd>{{currentBooking.flight.price | currency}}</dd>
                     </dl>
                   </div>
                 </div>
                 <div class="col-lg-8 order-lg-1">
                   <div class="jumbotron form-jumbotron" style="width:100%">
+                    <div class="alert alert-warning" *ngIf="infoFormUsed">
+                      <div class="container">
+                        <div class="alert-icon">
+                          &#x26A0;
+                        </div>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                        <b>Please Note:</b> This form is for demonstration purposes only, and has not been secured for real information.
+                      </div>
+                    </div>
                     <form class="needs-validation" novalidate>
                       <div class="form-row">
-                        <div class="col-md-6 mb-3">
-                          <label for="validationCustom01">First name</label>
-                          <input type="text" class="form-control" placeholder="Mark" required>
+                        <div class="col-md-6 mb-3 form-group">
+                          <label for="validationCustom01" class="bmd-label-floating">First name</label>
+                          <input (change)="infoFormUsed=true" type="text" class="form-control" required>
                           <div class="valid-feedback">
                             Looks good!
                           </div>
                         </div>
-                        <div class="col-md-6 mb-3">
-                          <label for="validationCustom02">Last name</label>
-                          <input type="text" class="form-control" placeholder="Otto" required>
+                        <div class="col-md-6 mb-3 form-group">
+                          <label for="validationCustom02" class="bmd-label-floating">Last name</label>
+                          <input (change)="infoFormUsed=true" type="text" class="form-control" required>
                           <div class="valid-feedback">
                             Looks good!
                           </div>
                         </div>
                       </div>
                       <div class="form-row">
-                        <div class="col-md-6 mb-3">
-                          <label for="validationCustom03">City</label>
-                          <input type="text" class="form-control" placeholder="Greensville" required>
+                        <div class="col-md-6 mb-3 form-group">
+                          <label for="validationCustom03" class="bmd-label-floating">City</label>
+                          <input (change)="infoFormUsed=true" type="text" class="form-control" required>
                           <div class="invalid-feedback">
                             Please provide a valid city.
                           </div>
                         </div>
-                        <div class="col-md-3 mb-3">
-                          <label for="validationCustom04">State</label>
-                          <select class="custom-select" required>
-                            <option selected disabled value="">Choose...</option>
-                            <option>...</option>
-                          </select>
+                        <div class="col-md-3 mb-3 form-group">
+                          <label for="validationState" class="bmd-label-floating">State</label>
+                          <input (change)="infoFormUsed=true" type="text" class="form-control" required>
                           <div class="invalid-feedback">
                             Please select a valid state.
                           </div>
                         </div>
-                        <div class="col-md-3 mb-3">
-                          <label for="validationCustom05">Zip</label>
-                          <input type="text" class="form-control" placeholder="12345" required>
+                        <div class="col-md-3 mb-3 form-group">
+                          <label for="validationCustom05" class="bmd-label-floating">Zip</label>
+                          <input (change)="infoFormUsed=true" type="text" class="form-control" required>
                           <div class="invalid-feedback">
                             Please provide a valid zip.
                           </div>
                         </div>
                       </div>
                       <div class="form-row">
-                        <div class="col-12 mb-3">
-                          <label for="validationCustomEmail">Email</label>
+                        <div class="col-12 mb-3 form-group">
+                          <label for="validationCustomEmail" class="bmd-label-floating">Email</label>
                           <div class="input-group">
-                            <input type="text" class="form-control" id="validationCustomEmail" placeholder="janedoe@example.com" required>
+                            <input (change)="infoFormUsed=true" type="text" class="form-control" id="validationCustomEmail" required>
                             <div class="invalid-feedback">
                               Please enter your email.
                             </div>
@@ -200,23 +208,23 @@
                         </div>
                       </div>
                       <div class="form-row">
-                        <div class="col-md-7 mb-3">
-                          <label for="validationCustom03">Credit Card</label>
-                          <input type="text" class="form-control" placeholder="xxxx-xxxx-xxxx-xxxx" required>
+                        <div class="col-md-7 mb-3 form-group">
+                          <label for="validationCustom03" class="bmd-label-floating">Credit Card</label>
+                          <input (change)="infoFormUsed=true" type="text" class="form-control"  required>
                           <div class="invalid-feedback">
                             Please provide a valid credit card number.
                           </div>
                         </div>
-                        <div class="col-md-3 mb-3">
-                          <label for="validationCustom04">Expiration</label>
-                          <input type="text" class="form-control" placeholder="mm/dd/yyyy" required>
+                        <div class="col-md-3 mb-3 form-group">
+                          <label for="validationCustom04" class="bmd-label-floating">Expiration</label>
+                          <input (change)="infoFormUsed=true" type="text" class="form-control"  required>
                           <div class="invalid-feedback">
                             Please provide a valid expiration date.
                           </div>
                         </div>
-                        <div class="col-md-2 mb-3">
-                          <label for="validationCustom04">CVC</label>
-                          <input type="text" class="form-control" placeholder="xxx" required>
+                        <div class="col-md-2 mb-3 form-group">
+                          <label for="validationCustom04" class="bmd-label-floating">CVC</label>
+                          <input (change)="infoFormUsed=true" type="text" class="form-control"  required>
                           <div class="invalid-feedback">
                             Please provide a valid CVC.
                           </div>
@@ -232,7 +240,6 @@
                           </label>
                         </div>
                       </div>
-                      <small>This form is for demonstration purposes.  Please do not supply any actual information.</small>
                     </form>
                   </div>
                 </div>

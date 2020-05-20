@@ -29,13 +29,15 @@ ngb-datepicker.is-valid
   color: #7a7c7d
 
 .submit-jumbotron
-  background: linear-gradient(45deg, #15294c, #16af89)
+  background-color: #e9ecef
   margin: 0
   padding: 25px
 
 .info-jumbotron
   background-color: #e9ecef
 
+.form-jumbotron, .info-jumbotron, .submit-jumbotron
+  margin-bottom: 8px
 
 .mega-submit-btn
   background: linear-gradient(125deg,#873096,#70278e)
@@ -61,6 +63,17 @@ ngb-datepicker.is-valid
   min-width: 44px
   width: 44px
 
-.btn-dateselect:hover:active
-  background: linear-gradient(30deg, #5a5ab9, #16af89)
+.btn-dateselect:focus:active .btn.btn-primary:focus:active
+  background: linear-gradient(30deg, #5a5ab9, #16af89) !important
 
+.btn.btn-primary
+  background: linear-gradient(-30deg, #5a5ab9, #16af89)
+
+.btn.btn-primary.disabled
+  background: #404040
+
+.info-jumbotron dt
+  font-weight: 600
+
+.card-body.flight-card
+  background: #F2f2f2

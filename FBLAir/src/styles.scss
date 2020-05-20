@@ -120,10 +120,17 @@ $big-profile-imgwidth: 240px;
 }
 
 .letsdothis-btn {
-  background: linear-gradient(45deg,#15294c, #16af89);
   border: none !important;
   padding: 2rem 4rem !important;
   border-radius: 0.5rem !important;
+}
+
+.fancy-btn {
+  background: linear-gradient(45deg, #15294c, #16af89);
+}
+
+.letsdothis-btn:active:focus {
+  background: linear-gradient(-45deg, #4d4da1, #14866a);
 }
 
 .nav-pills .nav-link fa-icon {
@@ -142,8 +149,16 @@ $big-profile-imgwidth: 240px;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
 
-#logo{
-  height:50px;
-  width:auto;
-  margin-top:-8px;
+#logo {
+  height: 50px;
+  width: auto;
+  margin-top: -8px;
+}
+
+.link {
+  color: #246c8e
+}
+
+.clicky-tabs{
+    padding-bottom: 1rem
 }

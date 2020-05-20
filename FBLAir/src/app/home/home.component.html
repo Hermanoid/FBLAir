@@ -12,7 +12,7 @@
       </div>
       <div id="animation_resize_container" [class.d-none]="animationComplete">
         <!-- "bootstrap" container used in scripts to calculate animation window size. -->
-        <div id="animation_container">
+        <div id="animation_container" class="background-blur">
           <canvas id="canvas"  style="position: absolute; display: none;"></canvas>
           <div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:800px; height:600px; position: absolute; left: 0px; top: 0px; display: none;">
           </div>
@@ -55,7 +55,7 @@
               <img src="assets/img/helpful-human.png" alt="Helpful Human Icon" class="img-fluid intro-icon" />
             </div>
             <div class="col-md-8 col-lg-12">
-              <h2>Who We Are</h2>
+              <h3>Who We Are</h3>
               <p>We are DigitAir, a discount airline based on the idea that finding inexpensive flights need not be a joyless and challenging process.</p>
             </div>
           </div>
@@ -77,7 +77,7 @@
               <img src="assets/img/whacky-hammer.png" alt="Whacky Hammer Icon" class="img-fluid intro-icon" />
             </div>
             <div class="col-md-8 col-lg-12">
-              <h3>How we do it</h3>
+              <h3>How We Do It</h3>
               <p>
                 By minimizing labor costs with technology and cutting back on frivolous in-flight amenities, DigitAir puts every dollar to work bringing a no-frills, turbulence-free journey takeoff to touchdown.
               </p>
@@ -92,7 +92,7 @@
       <div class="row">
         <div class="col-12 text-center">
           <h1 class="text-center">Get Started Today</h1>
-          <button class="btn btn-primary btn-lg letsdothis-btn" (click)="router.navigate(['booking'])">Lets do this!</button>
+          <button class="btn btn-primary btn-lg letsdothis-btn fancy-btn" (click)="router.navigate(['booking'])">Lets do this!</button>
         </div>
       </div>
     </div>
@@ -104,21 +104,21 @@
           <div class="card p-3">
             <h3 class="card-title nice-font">Now Hiring!</h3>
             <p>DigitAir offers a collaborative and positive work environment and competitive pay.  Click the link for more details.</p>
-            <button class="btn btn-primary front-link-btn" routerLink="/jobs">Reveal the Jobs >></button>
+            <button class="btn btn-primary front-link-btn fancy-btn" routerLink="/jobs">Reveal the Jobs >></button>
           </div>
         </div>
         <div class="col-lg-4">
           <div class="card p-3">
             <h3 class="card-title nice-font">Frequent Flyer Program</h3>
             <p>Information about DigitAir's robust Frequent Flyer Program can be found beyond this link</p>
-            <button class="btn btn-primary front-link-btn" routerLink="/freqfly">I Frequent the Skies >></button>
+            <button class="btn btn-primary front-link-btn fancy-btn" routerLink="/freqfly">I Frequent the Skies >></button>
           </div>
         </div>
         <div class="col-lg-4">
           <div class="card p-3">
             <h3 class="card-title nice-font">About</h3>
             <p>DigitAir's history began as a project between two high school students and grew into something great.  See what makes this site tick here.</p>
-            <button class="btn btn-primary front-link-btn" routerLink="/credits">Delve into the History >></button>
+            <button class="btn btn-primary front-link-btn fancy-btn" routerLink="/credits">Delve into the History >></button>
           </div>
         </div>
       </div>

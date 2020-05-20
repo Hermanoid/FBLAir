@@ -3,8 +3,10 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\common",
-    "\\src\\app\\home"
+    "\\src\\app\\jobs",
+    "\\src\\assets",
+    "\\src\\assets\\img"
   ],
+  "SelectedNode": "\\src\\app\\jobs\\jobs.component.html",
   "PreviewInSolutionExplorer": false
 }

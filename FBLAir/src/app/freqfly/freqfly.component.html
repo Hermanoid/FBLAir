@@ -20,10 +20,10 @@
     <div class="container">
       <div class="row">
         <div class="col-md-3">
-          <ul class="nav nav-pills nav-pills-icons flex-column" role="tablist">
+          <ul class="nav nav-pills nav-pills-icons flex-column clicky-tabs" role="tablist">
             <!--
-                color-classes: "nav-pills-primary", "nav-pills-info", "nav-pills-success", "nav-pills-warning","nav-pills-danger"
-            -->
+          color-classes: "nav-pills-primary", "nav-pills-info", "nav-pills-success", "nav-pills-warning","nav-pills-danger"
+      -->
             <li class="nav-item">
               <a class="nav-link active" href="#environment" role="tab" data-toggle="tab">
                 <div class="icon-box"> <fa-icon [icon]="faAdjust"></fa-icon></div> Eligibility
@@ -45,6 +45,9 @@
               </a>
             </li>
           </ul>
+        </div>
+        <div class="col-12 d-block d-md-none">
+          <hr />
         </div>
         <div class="col-md-8">
           <div class="tab-content">

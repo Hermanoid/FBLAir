@@ -17,7 +17,7 @@ export class BookingComponent implements OnInit {
   public activePage: number;
   public source: Airport;
   public destination: Airport;
-  public validate: boolean = false;
+  public validate = false;
   public date: NgbDate;
   public filteredFlights: Flight[];
   public errorMessage: string;
@@ -30,27 +30,31 @@ export class BookingComponent implements OnInit {
   }
   activatePage(num: number) {
     if ((!this.formValidated() && num != 1) //These two cases prevent users from navigating forward when they haven't completed the necessary steps
-      ||(!this.currentBooking && num == 3)) {
+      ||(!this.currentBooking && num === 3)) {
       return;
     }
     this.activePage = num;
   }
   setSource($event) {
-    this.source = this.bookingService.Airports.find((airport) => airport.id == $event.target.value);
+    this.source = this.bookingService.Airports.find((airport) => airport.id === $event.target.value);
+    this.validateForm();
   }
   setDestination($event) {
-    this.destination = this.bookingService.Airports.find((airport) => airport.id == $event.target.value);
+    this.destination = this.bookingService.Airports.find((airport) => airport.id === $event.target.value);
+    this.validateForm();
   }
   onDateSelection(date: NgbDate) {
     this.date = date;
+    this.validateForm()
   }
   onManualDateEntry($event) {
-    let javascriptDate = new Date($event.target.value); //Parse the date
+    const javascriptDate = new Date($event.target.value); //Parse the date
     this.date = new NgbDate(javascriptDate.getUTCFullYear(), javascriptDate.getUTCMonth()+1, javascriptDate.getUTCDate()); //Convert it to NgbDate (the format used by Ng-boostraps datepicker module) (also months are 0-based in native javascript, so we must add 1 to get to 1-based for NgbDate)
     console.log(this.date);
+    this.validateForm();
   }
   validateForm(): boolean { //Perform the validation (not to be confused with formValidated())
-    if (this.source == this.destination) {
+    if (this.source&&this.source === this.destination) {
       this.errorMessage = "The source airport cannot match the destination!";
     } else if (this.date && this.toMoment(this.date).isBefore(moment())) { //If the day is before today
       this.errorMessage = "Selected date must not be in the past";
@@ -66,6 +70,7 @@ export class BookingComponent implements OnInit {
     if (this.validateForm()) {
       this.activePage = 2;
       this.filterFlights();
+      this.currentBooking = null;
     } else {
       this.validate = true;
     }
@@ -74,7 +79,7 @@ export class BookingComponent implements OnInit {
     let targetDay = this.toMoment(this.date); //Months in NgbDate are 1-index, but javascript starts its month numbering at 0.
     this.filteredFlights = this.bookingService.Flights.filter((flight) => {
       let correctDay = moment(flight.departureTime).isSame(targetDay, "day");
-      return correctDay && flight.originAirportId == this.source.id && flight.destinationAirportId == this.destination.id;
+      return correctDay && flight.originAirportId === this.source.id && flight.destinationAirportId === this.destination.id;
     }).sort((a, b) => a.departureTime.getTime() - b.departureTime.getTime());
   }
 
