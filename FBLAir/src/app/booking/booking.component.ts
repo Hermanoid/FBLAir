@@ -22,6 +22,7 @@ export class BookingComponent implements OnInit {
   public filteredFlights: Flight[];
   public errorMessage: string;
   public currentBooking: Booking;
+  public infoFormUsed: boolean;
   faLongArrowAltRight = faLongArrowAltRight;
   constructor(public bookingService: BookingService) { }
 
